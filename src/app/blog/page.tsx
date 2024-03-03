@@ -1,10 +1,9 @@
-import Image from 'next/image'
 import PostCard from './_components/post-card'
 
 export default function Blog() {
   return (
-    <div className="mx-auto max-w-5xl w-full antialiased">
-      <div className="flex items-center justify-between uppercase text-sm py-4 text-slate-900 px-3 lg:px-0">
+    <div className="mx-auto max-w-5xl w-full">
+      <div className="flex items-center justify-between uppercase text-sm py-4 text-zinc-900 px-3 lg:px-0">
         <div>
           <span className="font-bold">Últimos Posts</span>
         </div>
@@ -29,31 +28,31 @@ export default function Blog() {
         <PostCard
           title='Lorem ipsum dolor, sit amet consectetur adipisicing elit.'
           image='/img/img1.jpg'
-          category='Tecnologia'
+          category='cat1'
           featured={true}
         />
         <PostCard
           title='Lorem ipsum dolor, sit amet consectetur adipisicing elit.'
-          image='/img/img3.jpg'
-          category='Tecnologia'
-          featured={false}
-        />
-        <PostCard
-          title='Lorem ipsum dolor, sit amet consectetur adipisicing elit.'
           image='/img/img2.jpg'
-          category='Tecnologia'
+          category='cat1'
           featured={false}
         />
         <PostCard
           title='Lorem ipsum dolor, sit amet consectetur adipisicing elit.'
           image='/img/img3.jpg'
-          category='Tecnologia'
+          category='cat2'
+          featured={false}
+        />
+        <PostCard
+          title='Lorem ipsum dolor, sit amet consectetur adipisicing elit.'
+          image='/img/img1.jpg'
+          category='cat1'
           featured={false}
         />
         <PostCard
           title='Lorem ipsum dolor, sit amet consectetur adipisicing elit. auhau ahu aua uha uahu ahu a'
-          image='/img/img3.jpg'
-          category='Tecnologia'
+          image='/img/img2.jpg'
+          category='cat2'
           featured={false}
         />
       </div>
