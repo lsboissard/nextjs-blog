@@ -2,7 +2,7 @@ import PostCard from './_components/post-card'
 
 export default function Blog() {
   return (
-    <main className="mx-auto max-w-5xl w-full">
+    <div className="mx-auto max-w-5xl w-full">
       <div className="flex items-center justify-between uppercase text-sm py-4 text-zinc-900 px-3 lg:px-0">
         <div>
           <span className="font-bold">Últimos Posts</span>
@@ -56,6 +56,6 @@ export default function Blog() {
           featured={false}
         />
       </div>
-    </main>
+    </div>
   )
 }

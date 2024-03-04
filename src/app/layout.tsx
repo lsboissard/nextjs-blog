@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Sans } from 'next/font/google'
 import "./globals.css";
+import Header from "@/components/header";
 
 const notoSans = Noto_Sans({
   subsets: ['latin'],
@@ -20,7 +21,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={notoSans.className}>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <Header />
+        <main className="min-h-screen">
+          {children}
+        </main>
+      </body>
     </html>
   );
 }
