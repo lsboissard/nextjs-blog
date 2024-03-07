@@ -40,7 +40,7 @@ export default function BookmarkButton() {
     <>
       <Toaster />
       <button className="absolute right-3 top-3" onClick={handleToggleBookmark}>
-        <div className="flex items-center justify-center hover:bg-white/95 hover:transition-all rounded-full h-8 bg-white/85 w-8">
+        <div className="flex items-center justify-center hover:bg-white/95 hover:transition-all rounded-full h-8 bg-zinc-100/85 w-8">
           {isToggled == false &&
             <svg className="h-4 text-zinc-500" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path

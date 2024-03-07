@@ -5,7 +5,7 @@ export default function Blog() {
     <div className="mx-auto max-w-5xl w-full">
       <div className="flex items-center justify-between uppercase text-sm py-4 text-zinc-900 px-3 lg:px-0">
         <div>
-          <span className="font-bold">Últimos Posts</span>
+          <span className="font-bold dark:text-zinc-50">Últimos Posts</span>
         </div>
         <div className="flex gap-2 items-center">
           <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

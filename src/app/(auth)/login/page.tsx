@@ -19,6 +19,7 @@ export default function Login() {
         </div>
 
         <h3>Acesse sua conta do Blog.</h3>
+
         <form className="flex flex-col gap-3" action="">
           <div className="relative">
             <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -93,6 +94,13 @@ export default function Login() {
             </div>
           </div>
           <button type="submit" className="rounded-md px-3 py-2 bg-zinc-900 text-zinc-50">Continuar com E-mail</button>
+          <p className="px-8 text-center text-xs">
+            Não possui uma conta? {" "}
+            <Link href="/register" className="underline underline-offset-4 hover:no-underline">
+              Faça o cadastro
+            </Link>
+            .
+          </p>
           <div className=" text-center border-b border-zinc-200 my-3" style={{ lineHeight: 0 }}>
             <span className="px-2 text-xs font-semibold tracking-wide text-zinc-600 uppercase bg-white" style={{ lineHeight: 0 }}>Ou</span>
           </div>

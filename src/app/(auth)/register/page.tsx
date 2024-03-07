@@ -11,14 +11,14 @@ export default function Login() {
     setIsPasswordVisible(!isPasswordVisible)
   }
   return (
-    <div className="max-w-5xl mx-auto h-screen flex items-center justify-center" >
+    <div className="max-w-5xl mx-auto h-screen flex items-center justify-center -translate-y-12 pointer-events-none" >
       <div className="flex flex-col gap-3 md:w-[440px] p-5 pointer-events-auto">
         <div className="flex items-center">
           <h1 className="text-4xl font-bold">Cadastre-se</h1>
           {/* <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg> */}
         </div>
 
-        <h3>Crie sua conta do Blog.</h3>
+        <h3>Crie sua conta no Blog.</h3>
         <form className="flex flex-col gap-3" action="">
           <div className="relative">
             <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -148,6 +148,13 @@ export default function Login() {
             </div>
           </div>
           <button type="submit" className="rounded-md px-3 py-2 bg-zinc-900 text-zinc-50">Cadastrar com E-mail</button>
+          <p className="px-8 text-center text-xs">
+            Já possui uma conta? {" "}
+            <Link href="/login" className="underline underline-offset-4 hover:no-underline">
+              Faça o login
+            </Link>
+            .
+          </p>
           <div className=" text-center border-b border-zinc-200 my-3" style={{ lineHeight: 0 }}>
             <span className="px-2 text-xs font-semibold tracking-wide text-zinc-600 uppercase bg-white" style={{ lineHeight: 0 }}>Ou</span>
           </div>
@@ -187,7 +194,7 @@ export default function Login() {
               <span>Continuar com Google</span>
             </div>
           </button>
-          <p className="px-8 text-center text-xs mt-3">
+          <p className="px-8 text-center text-xs">
             Ao continuar, você aceita os{" "}
             <Link href="/terms" className="underline underline-offset-4 hover:no-underline">
               Termos de Uso
