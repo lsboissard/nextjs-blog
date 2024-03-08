@@ -2,8 +2,41 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
-export default function Login() {
+export default function RegisterPage() {
+  const router = useRouter()
+  const [data, setData] = useState({
+    name: '',
+    email: '',
+    password: '',
+  })
+
+  async function handleRegisterUser(event: any) {
+    event.preventDefault()
+
+    try {
+      const response = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ data })
+      })
+
+      const userData = await response.json()
+
+      if (response.ok) {
+        router.push('/login')
+      } else {
+        console.log('Error registering user:', userData)
+      }
+
+    } catch (err) {
+      console.error('Error registering user:', err)
+    }
+  }
+
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
   function togglePasswordVisibility(event: any) {
@@ -15,11 +48,32 @@ export default function Login() {
       <div className="flex flex-col gap-3 md:w-[440px] p-5 pointer-events-auto">
         <div className="flex items-center">
           <h1 className="text-4xl font-bold">Cadastre-se</h1>
-          {/* <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg> */}
         </div>
 
-        <h3>Crie sua conta no Blog.</h3>
-        <form className="flex flex-col gap-3" action="">
+        <h3 className="px-1">Crie sua conta no Blog.</h3>
+        <form className="flex flex-col gap-3" method="post">
+          <div className="relative">
+            <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 text-zinc-500"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round">
+                <circle cx="12" cy="8" r="5" />
+                <path d="M20 21a8 8 0 0 0-16 0" />
+              </svg>
+            </div>
+            <input
+              placeholder="digite seu nome"
+              type="text"
+              name="name"
+              value={data.name}
+              onChange={(e) => setData({ ...data, name: e.target.value })}
+              className="ps-10 w-full rounded-md border border-zinc-300 p-2 placeholder-zinc-300 focus:border-zinc-400 focus:outline-none focus:ring focus:ring-zinc-100" />          </div>
           <div className="relative">
             <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
               <svg
@@ -35,8 +89,13 @@ export default function Login() {
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
               </svg>
             </div>
-            <input placeholder="digite seu e-mail" type="email" name="email" className="ps-10 w-full rounded-md border border-zinc-300 p-2 placeholder-zinc-300 focus:border-zinc-400 focus:outline-none focus:ring focus:ring-zinc-100" />
-          </div>
+            <input
+              placeholder="digite seu e-mail"
+              type="email"
+              name="email"
+              value={data.email}
+              onChange={(e) => setData({ ...data, email: e.target.value })}
+              className="ps-10 w-full rounded-md border border-zinc-300 p-2 placeholder-zinc-300 focus:border-zinc-400 focus:outline-none focus:ring focus:ring-zinc-100" />          </div>
           <div className="relative">
             <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
               <svg
@@ -111,7 +170,9 @@ export default function Login() {
             <input
               placeholder="digite novamente sua senha"
               type={isPasswordVisible ? 'text' : 'password'}
-              name="password"
+              name="password-confirmed"
+              value={data.password}
+              onChange={(e) => setData({ ...data, password: e.target.value })}
               className="ps-10 pe-10 w-full rounded-md border border-zinc-300 p-2 placeholder-zinc-300 focus:border-zinc-400 focus:outline-none focus:ring focus:ring-zinc-100"
             />
             <div className="select-none cursor-pointer absolute inset-y-0 end-0 flex items-center pe-3" onClick={togglePasswordVisibility}>
@@ -147,7 +208,10 @@ export default function Login() {
               )}
             </div>
           </div>
-          <button type="submit" className="rounded-md px-3 py-2 bg-zinc-900 text-zinc-50">Cadastrar com E-mail</button>
+          <button
+            onClick={handleRegisterUser}
+            type="submit"
+            className="rounded-md px-3 py-2 bg-zinc-900 text-zinc-50">Cadastrar com E-mail</button>
           <p className="px-8 text-center text-xs">
             Já possui uma conta? {" "}
             <Link href="/login" className="underline underline-offset-4 hover:no-underline">
@@ -209,4 +273,8 @@ export default function Login() {
       </div>
     </div>
   )
+}
+
+function registerUser() {
+  throw new Error("Function not implemented.");
 }
